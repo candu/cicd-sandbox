@@ -15,11 +15,20 @@ test:
   stage: test
   script: cat compiled.txt | grep -q 'Hello world'
 
-package:
+pack-gz:
   stage: package
   script: cat compiled.txt | gzip > packaged.gz
   artifacts:
     paths:
     - packaged.gz
 
-
+pack-zip:
+  stage: package
+  before_script:
+  - nvm use
+  - npm install
+  script:
+  - node zip.js > packaged.zip
+  artifacts:
+    paths:
+    - packaged.zip
