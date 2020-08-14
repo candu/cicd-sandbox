@@ -25,6 +25,7 @@ pack-gz:
 pack-zip:
   stage: package
   before_script:
+  - . /home/ec2-user/.bashrc
   - nvm use
   - npm install
   script:
